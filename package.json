@@ -1,0 +1,27 @@
+{
+  "name": "project-simple-red-css",
+  "version": "1.0.0",
+  "description": "Simple Css Manager",
+  "main": "dist/RedCss.js",
+  "dependencies": {
+    "project-simple-red-detector": "^1.0.10"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  },
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/project-simple/RedCss.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/project-simple/RedCss/issues"
+  },
+  "homepage": "https://github.com/project-simple/RedCss#readme"
+}
