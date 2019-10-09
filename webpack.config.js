@@ -1,15 +1,35 @@
-var path = require('path');
-
-module.exports = {
-	mode: 'production',
-	entry: {
-		"RedCss":'./src/RedCss.js',
-		"RedCss.min" : './src/RedCss.js'
-	},
-	output: {
-		library:'RedCss',
-		libraryTarget: 'umd',
-		filename: '[name].js',
-		path: path.resolve(__dirname, 'dist')
-	}
-};
+const path = require('path');
+const webpack = require("webpack");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const fileName = 'RedCss';
+module.exports = (function () {
+	var config = {
+		mode:'none',
+		entry : {},
+		output: {
+			library: fileName,
+			libraryTarget: "umd",
+			libraryExport: "default",
+			umdNamedDefine: true,
+			globalObject: "typeof self !== 'undefined' ? self : this",
+			filename: '[name].js',
+			path: path.resolve(__dirname, 'dist')
+		},
+		optimization: {
+			namedModules: true,
+			mangleWasmImports: true,
+			minimize: true,
+			minimizer: [new UglifyJsPlugin({
+				include: /\.min\.js$/,
+				uglifyOptions: {
+					compress: {
+						drop_console: true
+					}
+				}
+			})]
+		}
+	};
+	config.entry[fileName] = `./src/${fileName}.js`;
+	config.entry[fileName+'.min'] = `./src/${fileName}.js`;
+	return config
+})();
