@@ -66,13 +66,13 @@ html {
 }
 ```
 ```javascript
-    RedCss('html').S('background'); //return blue
+RedCss('html').S('background'); //return blue
 ```
 
 ## Remove Css 
 - RedCss('targetKey').remove()
 ```javascript
-    RedCss('body').remove(); // remove body css
+RedCss('body').remove(); // remove body css
 ````
 
 ## TestCase
