@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Simple Css Manager",
   "main": "dist/RedCss.min.js",
+
   "dependencies": {
     "project-simple-red-detector": "^1.0.10"
   },
@@ -12,6 +13,8 @@
     "webpack-cli": "^3.3.9"
   },
   "scripts": {
+    "npmVersionPatch": "npm --no-git-tag-version version patch",
+    "npmPublish": "npm adduser && npm publish",
     "build": "webpack"
   },
   "repository": {
