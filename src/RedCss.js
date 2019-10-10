@@ -64,9 +64,9 @@ fn.S = (function () {
 				k = k.replace(exp, regFunc);
 				if (i < arg.length) {
 					typeof this[k] == "function" ? this[k](v) :
-						typeof v == "number" && !noPx[k] ? tS[k] = (v + "px") : tS[k] = v
+						typeof v == "number" ? tS[k] = noPx[k] ? v : (v + "px") : tS[k] = v
 				} else {
-					return typeof this[k] == "function" ? this[k]() : typeof v == "number" ? parseFloat(tS[k]) : tS[k];
+					return typeof this[k] == "function" ? this[k]() : isNaN(parseFloat(tS[k])) ? tS[k] : (tS[k].indexOf('px') > -1) ? parseFloat(tS[k]) : tS[k]
 				}
 				if (i == max - 1) return this
 			}
@@ -82,9 +82,9 @@ fn.S = (function () {
 				k = arg[i], i++, v = arg[i];
 				if (i < arg.length) {
 					typeof this[k] == "function" ? this[k](v) :
-						typeof v == "number" && !noPx[k] ? tS[k] = (v + "px") : tS[k] = v
+						typeof v == "number" ? tS[k] = noPx[k] ? v : (v + "px") : tS[k] = v
 				} else {
-					return typeof this[k] == "function" ? this[k]() : typeof v == "number" ? parseFloat(tS[k]) : tS[k];
+					return typeof this[k] == "function" ? this[k]() : isNaN(parseFloat(tS[k])) ? tS[k] : (tS[k].indexOf('px') > -1) ? parseFloat(tS[k]) : tS[k]
 				}
 				if (i == max - 1) return this
 			}

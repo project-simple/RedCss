@@ -245,81 +245,81 @@ RedCssCls = function (k) {
 			this.__noHasBrowser = true
 		}
 	}
-},
-	getIndex = function (k) {
-		var i = sheet.cssRules.length;
-		var result;
-		while (i--) {
-			if (sheet.cssRules[i].selectorText == k) {
-				result = i;
-				break
-			}
+};
+getIndex = function (k) {
+	var i = sheet.cssRules.length;
+	var result;
+	while (i--) {
+		if (sheet.cssRules[i].selectorText == k) {
+			result = i;
+			break
 		}
-		return result
-	},
+	}
+	return result
+},
 	//////////////////////////////////
 	// 프로토타입 정의
-	fn = RedCssCls.prototype,
-	// 외부 유출용 프로토타입 정의
-	RedCssCls.fn = fn,
-	fn.S = (function () {
-		var isIE9 = project_simple_red_detector__WEBPACK_IMPORTED_MODULE_0___default.a.browser == 'ie' && project_simple_red_detector__WEBPACK_IMPORTED_MODULE_0___default.a.browserVer < 10;
-		var exp = /-([a-z])/gi;
-		var noPx = {'opacity': 1, 'z-index': 1, 'zIndex': 1};
-		var regFunc = function (match, char, index, str) {
-			return char.toUpperCase();
-		};
-		if (isIE9) {
-			return function () {
-				var arg = arguments;
-				var max, i;
-				var k, v, tS;
-				i = 0, max = arg.length;
-				tS = this.rull;
-				for (i; i < max; i++) {
-					k = arg[i], i++, v = arg[i];
-					k = k.replace(exp, regFunc);
-					if (i < arg.length) {
-						typeof this[k] == "function" ? this[k](v) :
-							typeof v == "number" && !noPx[k] ? tS[k] = (v + "px") : tS[k] = v
-					} else {
-						return typeof this[k] == "function" ? this[k]() : typeof v == "number" ? parseFloat(tS[k]) : tS[k];
-					}
-					if (i == max - 1) return this
+	fn = RedCssCls.prototype;
+// 외부 유출용 프로토타입 정의
+RedCssCls.fn = fn;
+fn.S = (function () {
+	var isIE9 = project_simple_red_detector__WEBPACK_IMPORTED_MODULE_0___default.a.browser == 'ie' && project_simple_red_detector__WEBPACK_IMPORTED_MODULE_0___default.a.browserVer < 10;
+	var exp = /-([a-z])/gi;
+	var noPx = {'opacity': 1, 'z-index': 1, 'zIndex': 1};
+	var regFunc = function (match, char, index, str) {
+		return char.toUpperCase();
+	};
+	if (isIE9) {
+		return function () {
+			var arg = arguments;
+			var max, i;
+			var k, v, tS;
+			i = 0, max = arg.length;
+			tS = this.rull;
+			for (i; i < max; i++) {
+				k = arg[i], i++, v = arg[i];
+				k = k.replace(exp, regFunc);
+				if (i < arg.length) {
+					typeof this[k] == "function" ? this[k](v) :
+						typeof v == "number" ? tS[k] = noPx[k] ? v : (v + "px") : tS[k] = v
+				} else {
+					return typeof this[k] == "function" ? this[k]() : isNaN(parseFloat(tS[k])) ? tS[k] : (tS[k].indexOf('px') > -1) ? parseFloat(tS[k]) : tS[k]
 				}
-			}
-		} else {
-			return function () {
-				var arg = arguments;
-				var max, i;
-				var k, v, tS;
-				i = 0, max = arg.length;
-				tS = this.rull;
-				for (i; i < max; i++) {
-					k = arg[i], i++, v = arg[i];
-					if (i < arg.length) {
-						typeof this[k] == "function" ? this[k](v) :
-							typeof v == "number" && !noPx[k] ? tS[k] = (v + "px") : tS[k] = v
-					} else {
-						return typeof this[k] == "function" ? this[k]() : typeof v == "number" ? parseFloat(tS[k]) : tS[k];
-					}
-					if (i == max - 1) return this
-				}
+				if (i == max - 1) return this
 			}
 		}
-	})(),
-	fn.remove = function () {
-		sheet.deleteRule(getIndex(this.__key));
-		delete UU_TABLE[this.__key];
-		UUID--
-	};
+	} else {
+		return function () {
+			var arg = arguments;
+			var max, i;
+			var k, v, tS;
+			i = 0, max = arg.length;
+			tS = this.rull;
+			for (i; i < max; i++) {
+				k = arg[i], i++, v = arg[i];
+				if (i < arg.length) {
+					typeof this[k] == "function" ? this[k](v) :
+						typeof v == "number" ? tS[k] = noPx[k] ? v : (v + "px") : tS[k] = v
+				} else {
+					return typeof this[k] == "function" ? this[k]() : isNaN(parseFloat(tS[k])) ? tS[k] : (tS[k].indexOf('px') > -1) ? parseFloat(tS[k]) : tS[k]
+				}
+				if (i == max - 1) return this
+			}
+		}
+	}
+})();
+fn.remove = function () {
+	sheet.deleteRule(getIndex(this.__key));
+	delete UU_TABLE[this.__key];
+	UUID--
+};
 RedCss = function (key) {
 	if (!UU_TABLE[key]) {
 		temp = new RedCssCls(key);
 		if (!temp.__noHasBrowser) UU_TABLE[key] = temp, UUID++
 	}
 	return UU_TABLE[key]
-}
+};
 /* harmony default export */ __webpack_exports__["default"] = (RedCss);
 
 /***/ })
