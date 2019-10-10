@@ -18,9 +18,17 @@
     "type": "git",
     "url": "git+https://github.com/project-simple/RedCss.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "css",
+    "red-css",
+    "project-simple"
+  ],
+  "author": {
+    "name": "redcamel",
+    "email": "webseon@gmail.com",
+    "url": "https://github.com/redcamel"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/project-simple/RedCss/issues"
   },
