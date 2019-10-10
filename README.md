@@ -1,7 +1,30 @@
 # RedCss
 Simple Css Manager
 
-#API
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+[![NPM](https://nodei.co/npm/project-simple-red-css.png)](https://npmjs.org/package/project-simple-red-css)
+
+github - [here](https://github.com/project-simple/RedCss)
+
+# Install 
+#### npm 
+```npm
+npm install project-simple-red-css --save-dev
+```
+```
+import RedCss from 'project-simple-red-css';
+```
+#### browser
+```html
+<script src="https://project-simple.github.io/RedCss/dist/RedCss.min.js"></script>
+<script>
+    RedCss('body').S('background','red');
+</script>
+```
+
+# API
 
 ## Css Search and make
 - RedCss('query string')
@@ -51,3 +74,6 @@ html {
 ```javascript
     RedCss('body').remove(); // remove body css
 ````
+
+## TestCase
+- testBDD : [here](https://project-simple.github.io/RedCss/testBDD.html)
